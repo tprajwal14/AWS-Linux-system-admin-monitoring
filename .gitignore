@@ -1,0 +1,5 @@
+health.log
+server-health.txt
+*.log
+*.pem
+.env
