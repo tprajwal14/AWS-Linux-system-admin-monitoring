@@ -96,3 +96,44 @@ The environment was configured and managed to simulate day-to-day responsibiliti
           ┌──────────┴───────────┐
           ▼                      ▼
    CloudWatch Access          S3 Access
+
+
+
+
+
+                         AWS EC2
+                            │
+                            ▼
+                  EC2-CloudWatch-Agent-Role
+                            │
+                   ┌────────┴────────┐
+                   │                 │
+                   ▼                 ▼
+      CloudWatchAgentServerPolicy   AmazonS3FullAccess
+                   │                 │
+                   ▼                 ▼
+              CloudWatch            Amazon S3
+                   │                 │
+                   ▼                 ▼
+          CPU / Memory / Disk    Reports / Logs
+
+
+
+Ubuntu EC2
+    │
+    ▼
+IAM Role
+    │
+    ├── CloudWatch Agent
+    │        ↓
+    │   CloudWatch Metrics
+    │        ↓
+    │   CloudWatch Alarms
+    │        ↓
+    │      SNS Email
+    │
+    └── AWS CLI
+             ↓
+          Amazon S3
+             ↓
+      Health Reports / Logs
