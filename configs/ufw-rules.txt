@@ -1,0 +1,66 @@
+UFW Firewall Configuration
+==========================
+
+Purpose
+-------
+Configured Ubuntu UFW firewall to allow required application
+and administration traffic on the EC2 Linux server.
+
+Allowed Rules
+-------------
+
+SSH
+Port: 22
+Purpose: Remote SSH administration
+
+Command:
+sudo ufw allow 22
+
+HTTP
+Port: 80
+Purpose: Nginx web server access
+
+Command:
+sudo ufw allow 80
+
+HTTPS
+Port: 443
+Purpose: HTTPS web traffic
+
+Command:
+sudo ufw allow 443
+
+
+Enable Firewall
+---------------
+
+Command:
+sudo ufw enable
+
+
+Check Firewall Status
+---------------------
+
+Command:
+sudo ufw status
+
+Detailed Status
+---------------
+
+Command:
+sudo ufw status numbered
+
+
+Configured Ports
+----------------
+
+22  -> SSH
+80  -> HTTP
+443 -> HTTPS
+
+
+Security Note
+-------------
+
+SSH access on port 22 was allowed before enabling UFW
+to avoid losing remote access to the EC2 server.

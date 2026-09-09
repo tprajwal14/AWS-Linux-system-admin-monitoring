@@ -1,0 +1,138 @@
+Linux Users, Groups, Ownership & Permissions
+=============================================
+
+Purpose
+-------
+Configured Linux users, groups, file ownership, and permissions
+on the Ubuntu EC2 server.
+
+
+Users Created
+-------------
+
+prajwal
+tejas
+
+
+Group Created
+-------------
+
+sysadmin
+
+
+User and Group Management
+-------------------------
+
+Create users:
+
+sudo adduser prajwal
+sudo adduser tejas
+
+Create group:
+
+sudo groupadd sysadmin
+
+
+Add users to sysadmin group:
+
+sudo usermod -aG sysadmin prajwal
+sudo usermod -aG sysadmin tejas
+
+
+Verification
+------------
+
+Check users:
+
+id prajwal
+id tejas
+
+Check group membership:
+
+groups prajwal
+groups tejas
+
+Check group:
+
+getent group sysadmin
+
+
+File Ownership
+--------------
+
+Ownership is managed using:
+
+chown
+
+Example:
+
+sudo chown prajwal:sysadmin <filename>
+
+
+File Permissions
+----------------
+
+Permission types:
+
+r = Read
+w = Write
+x = Execute
+
+
+Permission values:
+
+r = 4
+w = 2
+x = 1
+
+
+Example:
+
+640
+
+Owner:
+6 = Read + Write
+
+Group:
+4 = Read
+
+Others:
+0 = No Permission
+
+
+Apply permission:
+
+sudo chmod 640 <filename>
+
+
+Verify
+------
+
+Check file ownership and permissions:
+
+ls -l <filename>
+
+
+Example:
+
+-rw-r----- 1 prajwal sysadmin <size> <date> <filename>
+
+
+Access Model
+------------
+
+Users:
+prajwal
+tejas
+
+        │
+        ▼
+
+     sysadmin
+        │
+        ▼
+
+File Ownership & Permissions
+        │
+        ▼
+Controlled Access

@@ -1,0 +1,82 @@
+Cron Job Configuration
+======================
+
+Purpose
+-------
+Automatically execute the Linux server health-check script
+every 5 minutes and record the output in a health log.
+
+
+Health Check Script
+-------------------
+
+Script:
+ /home/ubuntu/Linux-Project/server_health.sh
+
+
+Cron Schedule
+-------------
+
+Frequency:
+Every 5 minutes
+
+Cron Expression:
+*/5 * * * *
+
+
+Configured Cron Entry
+---------------------
+
+*/5 * * * * /home/ubuntu/Linux-Project/server_health.sh >> /home/ubuntu/Linux-Project/health.log 2>&1
+
+
+Output File
+-----------
+
+/home/ubuntu/Linux-Project/health.log
+
+
+Output Handling
+---------------
+
+>>  = Appends the script output to the existing log file.
+
+2>&1 = Redirects standard error to the same log file.
+
+This allows both normal output and errors to be captured.
+
+
+Verification
+------------
+
+View configured Cron jobs:
+
+crontab -l
+
+
+View recent health-check output:
+
+tail -20 /home/ubuntu/Linux-Project/health.log
+
+
+Monitor the log in real time:
+
+tail -f /home/ubuntu/Linux-Project/health.log
+
+
+Automation Flow
+---------------
+
+Cron
+  |
+  v
+server_health.sh
+  |
+  +-- Hostname
+  +-- Uptime
+  +-- Memory
+  +-- Disk Usage
+  +-- Nginx Status
+  |
+  v
+health.log

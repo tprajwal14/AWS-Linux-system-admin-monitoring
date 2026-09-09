@@ -1,0 +1,137 @@
+SSH Configuration
+=================
+
+Purpose
+-------
+SSH is used for secure remote administration of the Ubuntu
+Linux server running on AWS EC2.
+
+
+Server Details
+--------------
+
+Cloud Platform:
+AWS EC2
+
+Operating System:
+Ubuntu Linux
+
+SSH Protocol:
+SSH
+
+SSH Port:
+22
+
+Linux User:
+ubuntu
+
+Authentication:
+SSH Key Pair
+
+Key Pair Name:
+linux-admin-key
+
+
+SSH Installation
+----------------
+
+Update package information:
+
+sudo apt update
+
+Install OpenSSH Server:
+
+sudo apt install openssh-server -y
+
+
+SSH Service Management
+----------------------
+
+Check SSH service:
+
+sudo systemctl status ssh
+
+Start SSH service:
+
+sudo systemctl start ssh
+
+Stop SSH service:
+
+sudo systemctl stop ssh
+
+Restart SSH service:
+
+sudo systemctl restart ssh
+
+Enable SSH service at system boot:
+
+sudo systemctl enable ssh
+
+Check whether SSH is enabled:
+
+sudo systemctl is-enabled ssh
+
+
+SSH Port Verification
+---------------------
+
+Check whether SSH is listening on port 22:
+
+sudo ss -tulpn | grep :22
+
+
+SSH Connection from Windows
+---------------------------
+
+Example:
+
+ssh -i .\Downloads\linux-admin-key.pem ubuntu@<EC2_PUBLIC_IP>
+
+
+SSH Connection from Linux
+-------------------------
+
+Example:
+
+ssh -i ~/Downloads/linux-admin-key.pem ubuntu@<EC2_PUBLIC_IP>
+
+
+EC2 Security Group
+------------------
+
+Protocol:
+TCP
+
+Port:
+22
+
+Source:
+My IP
+
+
+Security Practices
+------------------
+
+- SSH key-pair authentication is used for EC2 access.
+- SSH access is restricted through the EC2 Security Group.
+- The private key is stored securely on the administrator machine.
+- The private key is not stored in the GitHub repository.
+- AWS credentials, passwords, and tokens are not stored in this file.
+
+
+Sensitive Information
+---------------------
+
+EC2 Public IPv4:
+<EC2_PUBLIC_IP>
+
+EC2 Private IP:
+<EC2_PRIVATE_IP>
+
+Key Pair Name:
+linux-admin-key
+
+Private Key File:
+linux-admin-key.pem
+
+Private key content is not included in this repository.
